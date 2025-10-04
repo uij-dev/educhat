@@ -1,11 +1,12 @@
 import mongoose from "mongoose";
+import {ENV} from "./env.js"
 
 export const connectDB = async () => {
     try {
-        const {MONGO_LOCAL_URI} = process.env;
-        if (!MONGO_LOCAL_URI) throw new Error("MONGO_LOCAL_URI is not set");
+        const {MONGO_URI} = ENV;
+        if (!MONGO_URI) throw new Error("MONGO_LOCAL_URI is not set");
         
-        const conn = await mongoose.connect(process.env.MONGO_LOCAL_URI);
+        const conn = await mongoose.connect(ENV.MONGO_URI);
         console.log("MONGODB CONNECTED:", conn.connection.host);
     } catch (error) {
         console.error("Error connecting to MONGODB:", error)
