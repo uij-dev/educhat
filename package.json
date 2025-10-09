@@ -2,7 +2,7 @@
   "name": "educhat",
   "version": "1.0.0",
   "main": "index.js",
-  "engines":{
+  "engines": {
     "node": ">=20.0.0"
   },
   "scripts": {
@@ -20,5 +20,8 @@
     "url": "https://github.com/uij-dev/educhat/issues"
   },
   "homepage": "https://github.com/uij-dev/educhat#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "react-router": "^7.9.3"
+  }
 }
