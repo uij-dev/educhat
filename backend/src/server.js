@@ -1,5 +1,4 @@
 import express from 'express';
-import dotenv from "dotenv";
 import path from "path";
 import cookieParser from "cookie-parser";
 
@@ -14,7 +13,7 @@ const __dirname = path.resolve();
 
 const PORT = ENV.PORT || 3000;
 
-app.use(express.json()); // req.body
+app.use(express.json({limit: "50mb"})); // req.body
 app.use(cors({origin: ENV.CLIENT_URL, credentials: true}));
 app.use(cookieParser());
 

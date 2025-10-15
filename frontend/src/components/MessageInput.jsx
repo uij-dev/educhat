@@ -1,7 +1,6 @@
-import { useRef, useState } from "react";
+import {useRef, useState } from "react";
 import useKeyboardSound from "../hooks/useKeyboardSound";
 import { useChatStore } from "../store/useChatStore";
-import toast from "react-hot-toast";
 import { ImageIcon, SendIcon, XIcon } from "lucide-react";
 
 function MessageInput() {
@@ -65,7 +64,10 @@ function MessageInput() {
         </div>
       )}
 
-      <form onSubmit={handleSendMessage} className="max-w-3xl mx-auto flex space-x-4">
+      <form
+        onSubmit={handleSendMessage}
+        className="max-w-3xl mx-auto flex space-x-4"
+      >
         <input
           type="text"
           value={text}
@@ -105,4 +107,5 @@ function MessageInput() {
     </div>
   );
 }
+
 export default MessageInput;
