@@ -1,13 +1,13 @@
-import React, { useRef, useState } from "react";
+import { useState, useRef } from "react";
+import { LogOutIcon, VolumeOffIcon, Volume2Icon } from "lucide-react";
 import { useAuthStore } from "../store/useAuthStore";
 import { useChatStore } from "../store/useChatStore";
-import { LogOutIcon, Volume2Icon, VolumeOffIcon } from "lucide-react";
 import PageLoader from "./PageLoader";
 
 const mouseClickSound = new Audio("/sounds/mouse-click.mp3");
 
-export default function ProfileHeader() {
-  const { logout, authUser, updateProfile, isUpdatingProfile } = useAuthStore();
+function ProfileHeader() {
+  const { logout, authUser, updateProfile, isUpdatingProfile} = useAuthStore();
   const { isSoundEnabled, toggleSound } = useChatStore();
   const [selectedImg, setSelectedImg] = useState(null);
 
@@ -21,15 +21,14 @@ export default function ProfileHeader() {
     reader.readAsDataURL(file);
 
     reader.onloadend = async () => {
-      console.log(reader, file);
       const base64Image = reader.result;
       setSelectedImg(base64Image);
       await updateProfile({ profilePic: base64Image });
     };
   };
-  
+
   if (isUpdatingProfile) return <PageLoader />;
-  
+
   return (
     <div className="p-6 border-b border-slate-700/50">
       <div className="flex items-center justify-between">
@@ -101,5 +100,5 @@ export default function ProfileHeader() {
       </div>
     </div>
   );
-  
 }
+export default ProfileHeader;
